@@ -444,17 +444,6 @@
 
     <!-- ================= SCRIPTS ================= -->
     <script>
-        // CHAPITRAGE DE LA VIDÉO
-        function seekVideo(timeInSeconds) {
-            const video = document.getElementById('portfolio-video');
-            if (video) {
-                video.currentTime = timeInSeconds;
-                video.play();
-                // Scrolle doucement vers la vidéo si on est un peu trop haut ou bas
-                video.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-
         // GESTION DU MODAL DE CONTACT
         function toggleModal(show) {
             const modal = document.getElementById('contact-modal');
