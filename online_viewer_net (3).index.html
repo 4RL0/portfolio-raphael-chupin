@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raphael Chupin | Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Polices de secours (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- POLICES --- */
+        @font-face {
+            font-family: 'Barge';
+            src: url('Barge-Black.otf') format('opentype');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Barge';
+            src: url('Barge-BlackItalic.otf') format('opentype');
+            font-weight: 900;
+            font-style: italic;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Bolton';
+            src: url('BOLTON.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body { 
+            font-family: 'Bolton', 'Inter', sans-serif; 
+            background-color: #F7EFE9; 
+            color: #2E1500; 
+            overflow-x: hidden;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+        .font-serif { 
+            font-family: 'Barge', 'Playfair Display', serif; 
+        }
+
+        /* --- ANIMATION BLOB (HÉROS) --- */
+        .blob-container {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F7EFE9;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .blob {
+            width: 8in;
+            height: 8in;
+            border-radius: 50%;
+            
+            /* Base argentée lisse et claire, sans aucune ligne noire */
+            background: radial-gradient(
+                circle at 30% 30%, 
+                #ffffff 0%, 
+                #f4f4f4 15%, 
+                #cccccc 45%, 
+                #a0a0a0 80%, 
+                #888888 100%
+            );
+            
+            /* C'est ici qu'on crée l'aspect "Brillant / Glossy / Liquide" */
+            box-shadow: 
+                inset 30px 30px 60px rgba(255, 255, 255, 1),       /* Grand éclat lumineux intense */
+                inset -20px -20px 40px rgba(0, 0, 0, 0.25),        /* Ombre douce pour le volume 3D */
+                inset -60px -60px 60px rgba(255, 255, 255, 0.7),   /* Reflet clair sur le bord opposé (effet miroir) */
+                inset 10px 10px 15px rgba(255, 255, 255, 1),       /* Point de lumière hyper pur (spéculaire) */
+                0 30px 50px rgba(46, 21, 0, 0.1);                  /* Ombre portée douce sur le fond crème */
+            
+            /* Animation d'ondulation liquide */
+            animation: morphBlob 10s ease-in-out infinite alternate;
+            transform-origin: center;
+        }
+
+        /* Garde uniquement l'animation de déformation fluide */
+        @keyframes morphBlob {
+            0%   { border-radius: 52% 48% 55% 45% / 50% 55% 45% 50%; }
+            50%  { border-radius: 48% 52% 45% 55% / 55% 45% 50% 45%; }
+            100% { border-radius: 50% 50% 52% 48% / 45% 50% 55% 55%; }
+        }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+        @keyframes rotateBlob { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1); } 100% { transform: rotate(360deg) scale(1); } }
+
+        /* --- CARROUSEL FLUIDE (HORIZONTAL SCROLL) --- */
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            padding: 2rem 5vw 4rem 5vw; /* Plus de padding en bas pour la scrollbar */
+            gap: 2rem;
+            align-items: stretch;
+            /* Personnalisation de la barre de défilement pour la rendre PLUS VISIBLE */
+            scrollbar-width: thin;
+            scrollbar-color: rgba(46, 21, 0, 0.6) rgba(46, 21, 0, 0.15);
+        }
+        
+        /* Scrollbar Webkit (Chrome, Safari, Edge) */
+        .carousel-container::-webkit-scrollbar {
+            height: 12px; /* Plus épaisse */
+        }
+        .carousel-container::-webkit-scrollbar-track {
+            background: rgba(46, 21, 0, 0.12); /* Fond de la barre plus visible */
+            border-radius: 10px;
+            margin: 0 5vw; /* Aligne avec le padding */
+        }
+        .carousel-container::-webkit-scrollbar-thumb {
+            background-color: rgba(46, 21, 0, 0.5); /* Curseur plus contrasté */
+            border-radius: 10px;
+        }
+        .carousel-container::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(46, 21, 0, 0.8); /* Foncée au survol */
+        }
+        
+        .carousel-item {
+            scroll-snap-align: center;
+            flex: 0 0 85vw; /* Prend 85% de l'écran mobile */
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(46, 21, 0, 0.05);
+            border: 1px solid rgba(46, 21, 0, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .carousel-item {
+                flex: 0 0 70vw; /* Prend 70% sur desktop pour laisser entrevoir la suite */
+            }
+        }
+
+        /* --- BOUTONS --- */
+        .btn-outline {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 2.5rem;
+            border: 1px solid #2E1500;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.75rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background: transparent;
+            color: #2E1500;
+        }
+        .btn-outline:hover {
+            background: #2E1500;
+            color: #F7EFE9;
+            transform: translateY(-2px);
+        }
+
+        .btn-contact {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 50;
+            background: rgba(247, 239, 233, 0.8);
+            border: 1px solid #2E1500;
+            color: #2E1500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+        .btn-contact:hover { background: #2E1500; color: white; }
+
+        /* --- MODAL --- */
+        #contact-modal {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        #contact-modal.show { opacity: 1; }
+
+        .contact-item {
+            cursor: pointer;
+            transition: color 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+        .contact-item::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: currentColor;
+            transform-origin: bottom right;
+            transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        .contact-item:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BOUTON CONTACT FIXE -->
+    <button class="btn-contact" onclick="toggleModal(true)">Contact</button>
+
+    <!-- MODAL DE CONTACT -->
+    <div id="contact-modal" class="fixed inset-0 z-[60] items-center justify-center bg-transparent backdrop-blur-[80px]">
+        <div class="absolute inset-0 cursor-pointer" onclick="toggleModal(false)"></div>
+        <div class="relative z-10 w-full max-w-lg bg-[#2E1500] p-12 shadow-2xl flex flex-col items-center transform transition-all duration-500 ease-out scale-95 opacity-0" id="modal-box">
+            <button onclick="toggleModal(false)" class="absolute top-6 right-6 text-[#F7EFE9]/50 hover:text-[#F7EFE9] transition-colors text-3xl font-light">&times;</button>
+            <h3 class="text-3xl font-serif mb-10 italic border-b border-[#F7EFE9]/20 pb-6 w-full text-center text-[#F7EFE9]">Pour me contacter</h3>
+            <div class="flex flex-col items-center space-y-8 w-full text-[#F7EFE9]">
+                <div class="text-center group">
+                    <span class="block text-xs uppercase tracking-[0.2em] text-[#F7EFE9]/60 mb-2">Téléphone</span>
+                    <div class="text-xl md:text-2xl font-light contact-item" id="contact-phone" onclick="copyToClipboard('07 68 30 47 52', 'contact-phone')">07 68 30 47 52</div>
+                </div>
+                <div class="text-center group">
+                    <span class="block text-xs uppercase tracking-[0.2em] text-[#F7EFE9]/60 mb-2">Email</span>
+                    <div class="text-xl md:text-2xl font-light contact-item" id="contact-email" onclick="copyToClipboard('raphael.chupin@yahoo.com', 'contact-email')">raphael.chupin@yahoo.com</div>
+                </div>
+                <div class="text-center group">
+                    <span class="block text-xs uppercase tracking-[0.2em] text-[#F7EFE9]/60 mb-2">Réseau</span>
+                    <a href="www.linkedin.com/in/raphaël-chupin-697139278" target="_blank" class="text-xl md:text-2xl font-light contact-item">Profil LinkedIn ↗</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 1. HÉROS (ACCUEIL) ================= -->
+    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden ">
+        <div class="blob-container">
+            <div class="blob"></div>
+        </div>
+        <div class="relative z-10 text-center flex flex-col items-center">
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif mb-4 tracking-tight text-[#2E1500]">Raphael<br><span class="italic">Chupin</span></h1>
+            <p class="text-xs md:text-sm uppercase tracking-[0.3em] text-[#2E1500] mt-4">Génie Mécanique et Productique</p>
+            
+            <!-- Flèche pour scroller vers la suite -->
+            <a href="#section-video" class="absolute -bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50 hover:opacity-100 transition-opacity text-[#2E1500]">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- ================= 2. SECTION VIDÉO ================= -->
+   <section id="section-video" class="h-screen flex flex-col items-center justify-center border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
+        <div class="px-8 md:px-16 mb-12 text-center w-full">
+            <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">Vidéo</h2>
+            <p class="text-sm uppercase tracking-[0.3em] opacity-60 mt-2 text-[#2E1500]">Présentation immersive</p>
+        </div>
+        
+        <div class="w-full max-w-5xl px-6 md:px-12 flex flex-col items-center">
+            <!-- Lecteur Vidéo Centré -->
+            <div class="w-full aspect-video bg-gray-200 relative overflow-hidden border border-[#2E1500]/20 shadow-2xl rounded-2xl">
+                <video id="portfolio-video" controls playsinline class="absolute inset-0 w-full h-full object-cover outline-none bg-black">
+                    <source src="VACRA.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+            </div>
+            
+            <!-- Description -->
+            <p class="mt-8 text-lg md:text-xl text-[#2E1500] opacity-80 leading-relaxed font-light text-center max-w-3xl">
+                Mon Parcours. Ma vision. Mes Réalisation. Le tout en images
+            </p>
+
+            <!-- Chapitrage interactif -->
+            <div class="mt-12 w-full max-w-4xl">
+                <div class="flex items-center justify-center mb-6">
+                    <div class="h-px bg-[#2E1500]/20 flex-1"></div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase text-[#2E1500] opacity-60 px-4">Chapitrage</h4>
+                    <div class="h-px bg-[#2E1500]/20 flex-1"></div>
+                </div>
+                
+                <!-- Grille des boutons de chapitres -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                    <button onclick="seekVideo(0)" class="px-4 py-3 border border-[#2E1500]/20 rounded-xl text-sm text-[#2E1500] hover:bg-[#2E1500] hover:text-[#F7EFE9] transition-all duration-300 flex justify-between items-center group">
+                        <span class="font-semibold">Introduction</span> 
+                        <span class="opacity-50 font-mono text-xs group-hover:opacity-100">0:00</span>
+                    </button>
+                    <button onclick="seekVideo(45)" class="px-4 py-3 border border-[#2E1500]/20 rounded-xl text-sm text-[#2E1500] hover:bg-[#2E1500] hover:text-[#F7EFE9] transition-all duration-300 flex justify-between items-center group">
+                        <span class="font-semibold">Parcours</span> 
+                        <span class="opacity-50 font-mono text-xs group-hover:opacity-100">0:45</span>
+                    </button>
+                    <button onclick="seekVideo(115)" class="px-4 py-3 border border-[#2E1500]/20 rounded-xl text-sm text-[#2E1500] hover:bg-[#2E1500] hover:text-[#F7EFE9] transition-all duration-300 flex justify-between items-center group">
+                        <span class="font-semibold">Réalisation</span> 
+                        <span class="opacity-50 font-mono text-xs group-hover:opacity-100">1:55</span>
+                    </button>
+                    <button onclick="seekVideo(180)" class="px-4 py-3 border border-[#2E1500]/20 rounded-xl text-sm text-[#2E1500] hover:bg-[#2E1500] hover:text-[#F7EFE9] transition-all duration-300 flex justify-between items-center group">
+                        <span class="font-semibold">Conclusion</span> 
+                        <span class="opacity-50 font-mono text-xs group-hover:opacity-100">3:00</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 3. SECTION PARCOURS ================= -->
+    <section id="section-parcours" class="h-screen flex flex-col justify-center border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
+        <div class="px-8 md:px-16 mb-4">
+            <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">Parcours</h2>
+        </div>
+        
+        <!-- Carrousel Parcours -->
+        <div class="carousel-container">
+            
+            <!-- Slide 1 : Intro -->
+            <div class="carousel-item p-12 md:p-20 justify-center bg-[#2E1500] text-[#F7EFE9] border border-[#2E1500]/20">
+                <h3 class="text-5xl md:text-6xl font-serif mb-6">Évolution<br></h3>
+                <p class="text-lg opacity-80 mt-4">Un cheminement alliant création, technique et stratégie.</p>
+            </div>
+
+            <!-- Slide 2 : GMP alternance -->
+            <div class="carousel-item p-12 md:p-20 justify-center bg-[#2E1500] text-[#F7EFE9] border border-[#2E1500]/20">
+                <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-4 text-[#F7EFE9]">Aujourd'hui</div>
+                <h3 class="text-5xl font-serif mb-6">Formation GMP en alternance</h3>
+                <p class="text-xl opacity-80 leading-relaxed font-light">
+                    Création d'expériences numériques immersives et gestion de projets innovants. Fusion de l'esthétique et de la fonctionnalité.
+                </p>
+            </div>
+
+            <!-- Slide 3 : GMP Initial -->
+            <div class="carousel-item p-12 md:p-20 justify-center bg-[#2E1500] text-[#F7EFE9] border border-[#2E1500]/20">
+                <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-4 text-[#F7EFE9]">2023 - 2025</div>
+                <h3 class="text-5xl font-serif mb-6">Formation GMP en Initiale</h3>
+                <p class="text-xl opacity-80 leading-relaxed font-light">
+                    Conception centrée utilisateur pour des marques de luxe et d'ingénierie. Recherche, prototypage et validation de concepts.
+                </p>
+            </div>
+            
+            <!-- Slide 4 : STI2D -->
+            <div class="carousel-item p-12 md:p-20 justify-center bg-[#2E1500] text-[#F7EFE9] border border-[#2E1500]/20">
+                <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-4 text-[#F7EFE9]">2021 - 2024</div>
+                <h3 class="text-5xl font-serif mb-6">STI2D</h3>
+                <p class="text-xl opacity-80 leading-relaxed font-light">
+                    Conception centrée utilisateur pour des marques de luxe et d'ingénierie. Recherche, prototypage et validation de concepts.
+                </p>
+            </div>
+            
+        </div>
+    </section>
+    
+<!-- ================= 4. SECTION Projets ================= -->
+    <section id="section-projets" class="h-screen flex flex-col justify-center border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
+        <div class="px-8 md:px-16 mb-4">
+            <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">Projets</h2>
+        </div>
+        
+        <!-- Carrousel Projet -->
+        <div class="carousel-container">
+            
+            <!-- Slide 1 : Projet avec image -->
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] border border-[#2E1500]/20 flex flex-col overflow-hidden">
+                
+                <!-- Zone Image (utilise le chemin relatif vers votre dossier) -->
+                <div class="w-full h-64 md:h-80 flex-shrink-0">
+                    <img src="images/projet_1.jpg" alt="Nom du premier projet" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Zone Texte -->
+                <div class="p-8 md:p-12 flex flex-col justify-center flex-1">
+                    <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2 text-[#F7EFE9]">Date ou Catégorie</div>
+                    <h3 class="text-3xl md:text-4xl font-serif mb-4">Titre du Projet 1</h3>
+                    <p class="text-lg opacity-80 leading-relaxed font-light">
+                        Description de ce projet alliant technique, création et stratégie. Expliquez brièvement votre rôle et le résultat obtenu.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 2 : Un autre projet -->
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] border border-[#2E1500]/20 flex flex-col overflow-hidden">
+                <div class="w-full h-64 md:h-80 flex-shrink-0">
+                    <!-- Changez le nom de l'image ici -->
+                    <img src="images/projet2.png" alt="Nom du second projet" class="w-full h-full object-cover">
+                </div>
+                <div class="p-8 md:p-12 flex flex-col justify-center flex-1">
+                    <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2 text-[#F7EFE9]">2024</div>
+                    <h3 class="text-3xl md:text-4xl font-serif mb-4">Titre du Projet 2</h3>
+                    <p class="text-lg opacity-80 leading-relaxed font-light">
+                        Création d'expériences numériques immersives et gestion de projets innovants. Fusion de l'esthétique et de la fonctionnalité.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Ajoutez autant de "Slide" que vous avez de projets en copiant-collant le bloc ci-dessus -->
+
+        </div>
+    </section>
+    
+    <!-- ================= 5. SECTION CV ================= -->
+    <section id="section-cv" class="h-screen flex flex-col justify-center border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
+        <div class="px-8 md:px-16 mb-4 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+                <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">CV</h2>
+            </div>
+            <!-- Bouton Télécharger CV pointant vers le PDF correct -->
+            <a href="CV Raphael Chupin.pdf" download="CV Raphael Chupin.pdf" class="btn-outline flex items-center gap-3">
+                Télécharger le PDF
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            </a>
+        </div>
+        
+        <!-- Carrousel CV -->
+        <div class="carousel-container">
+            
+            <!-- Bloc 1 : Profil -->
+            <div class="carousel-item p-12 md:p-20 justify-center !bg-[#2E1500] !text-[#F7EFE9] !border-none">
+                <h3 class="text-5xl md:text-6xl font-serif italic mb-8">Profil</h3>
+                <ul class="space-y-4 text-xl font-light opacity-90">
+                    <li>Attrait pour la mobilité, la défense et la construction</li>
+                    <li>Pratique personnelle de la mécanique et du sport</li>
+                    <li>Curieux, créatif et autonome</li>
+                </ul>
+                <p class="text-xs uppercase tracking-widest mt-16 opacity-50">Objectif professionnel</p>
+            </div>
+            
+            <!-- Bloc 2 : Formations -->
+            <div class="carousel-item p-12 md:p-20 justify-center !bg-[#2E1500] !text-[#F7EFE9] !border-none">
+                <h3 class="text-5xl md:text-6xl font-serif mb-8">Formations</h3>
+                <ul class="space-y-4 text-xl font-light opacity-90">
+                    <li><span class="font-bold">BUT GMP (Simu. Num. et Réalité Virtuelle)</span> - IUT d'Orléans (Depuis sep. 2024)</li>
+                    <li><span class="font-bold">Bac STI2D ITEC</span> - Lycée Nikola Tesla, Dourdan (2021 - 2024)</li>
+                </ul>
+                <p class="text-xs uppercase tracking-widest mt-16 opacity-80">Parcours académique</p>
+            </div>
+
+            <!-- Bloc 3 : Expériences -->
+            <div class="carousel-item p-12 md:p-20 justify-center !bg-[#2E1500] !text-[#F7EFE9] !border-none">
+                <h3 class="text-5xl md:text-6xl font-serif italic mb-8">Expériences</h3>
+                <ul class="space-y-4 text-xl font-light opacity-90">
+                    <li><span class="font-bold">Stage Design Engineering</span> - Renault Group, Guyancourt (11 semaines)</li>
+                    <li><span class="font-bold">Préparateur Logistique</span> - ALDI / LIDL, Ablis (Juillet-Août 2024 et 2025)</li>
+                </ul>
+                <p class="text-xs uppercase tracking-widest mt-16 opacity-80">Parcours professionnel</p>
+            </div>
+
+            <!-- Bloc 4 : Compétences -->
+            <div class="carousel-item p-12 md:p-20 justify-center !bg-[#2E1500] !text-[#F7EFE9] !border-none">
+                <h3 class="text-5xl md:text-6xl font-serif mb-8">Compétences</h3>
+                <ul class="space-y-4 text-xl font-light opacity-90">
+                    <li><span class="font-bold">Logiciels CAO :</span> Creo Parametric, TopSolid</li>
+                    <li><span class="font-bold">Techniques :</span> Métrologie, Usinage, Fonderie, PLM (Cycle de vie produit)</li>
+                    <li><span class="font-bold">Gestion :</span> Travail en mode projet, Normes en vigueur</li>
+                    <li><span class="font-bold">Langues :</span> Anglais (B2), Allemand (A2)</li>
+                </ul>
+                <p class="text-xs uppercase tracking-widest mt-16 opacity-80">Savoir-faire techniques</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        // CHAPITRAGE DE LA VIDÉO
+        function seekVideo(timeInSeconds) {
+            const video = document.getElementById('portfolio-video');
+            if (video) {
+                video.currentTime = timeInSeconds;
+                video.play();
+                // Scrolle doucement vers la vidéo si on est un peu trop haut ou bas
+                video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // GESTION DU MODAL DE CONTACT
+        function toggleModal(show) {
+            const modal = document.getElementById('contact-modal');
+            const modalBox = document.getElementById('modal-box');
+            
+            if (show) {
+                modal.style.display = 'flex';
+                void modal.offsetWidth; // Force le reflow
+                modal.classList.add('show');
+                
+                setTimeout(() => {
+                    modalBox.classList.remove('scale-95', 'opacity-0');
+                    modalBox.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            } else {
+                modalBox.classList.remove('scale-100', 'opacity-100');
+                modalBox.classList.add('scale-95', 'opacity-0');
+                modal.classList.remove('show');
+                
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 400); 
+            }
+        }
+
+        // FONCTION DE COPIE DANS LE PRESSE-PAPIER
+        function copyToClipboard(text, elementId) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed"; 
+            textArea.style.left = "-9999px"; 
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                const el = document.getElementById(elementId);
+                const originalText = el.getAttribute('data-original') || el.innerText;
+                if (!el.getAttribute('data-original')) {
+                    el.setAttribute('data-original', originalText);
+                }
+                
+                el.innerText = "Copié !";
+                el.classList.add('text-[#F7EFE9]/50'); 
+                
+                setTimeout(() => {
+                    el.innerText = originalText;
+                    el.classList.remove('text-[#F7EFE9]/50');
+                }, 2000);
+            } catch (err) {
+                console.error("Erreur lors de la copie", err);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+    </script>
+    <!-- SCRIPT DE DÉFILEMENT VERTICAL FLUIDE -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("section");
+            let currentSectionIndex = 0;
+            let isScrolling = false;
+
+            window.addEventListener("wheel", (e) => {
+                // Ignore le défilement horizontal (pour laisser fonctionner tes carrousels)
+                if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+
+                // Bloque l'à-coup brutal de la molette par défaut
+                e.preventDefault();
+
+                // Si la page est déjà en train de glisser, on ignore le coup de molette
+                if (isScrolling) return;
+
+                if (e.deltaY > 0) {
+                    // Molette vers le bas
+                    if (currentSectionIndex < sections.length - 1) {
+                        currentSectionIndex++;
+                        smoothScrollToSection();
+                    }
+                } else {
+                    // Molette vers le haut
+                    if (currentSectionIndex > 0) {
+                        currentSectionIndex--;
+                        smoothScrollToSection();
+                    }
+                }
+            }, { passive: false });
+
+            function smoothScrollToSection() {
+                isScrolling = true;
+                
+                // Fait glisser la page en douceur vers la section ciblée
+                sections[currentSectionIndex].scrollIntoView({ behavior: "smooth" });
+                
+                // Verrouille la molette pendant 800ms (le temps de l'animation) pour éviter les sauts
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 800);
+            }
+        });
+    </script>
+</body>
+</html>
