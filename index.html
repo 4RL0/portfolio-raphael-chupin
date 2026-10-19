@@ -125,7 +125,7 @@
             background-color: rgba(46, 21, 0, 0.8);
         }
         
-        /* Harmonisation de la taille minimale de toutes les cartes */
+        /* Structure de base des cartes */
         .carousel-item {
             scroll-snap-align: center;
             flex: 0 0 85vw;
@@ -290,12 +290,12 @@
             <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">Parcours</h2>
         </div>
         
-        <!-- Carrousel Parcours -->
+        <!-- Carrousel Parcours (Image à gauche, texte à droite) -->
         <div class="carousel-container">
             <!-- Slide 1 : Intro -->
-            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
-                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
-                    <img src="images/parcours_1.jpg" alt="Évolution" class="w-full h-full object-contain rounded-lg">
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] !flex-col md:!flex-row">
+                <div class="w-full md:w-1/2 h-56 md:h-auto flex-shrink-0 bg-[#2E1500]/50 p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#F7EFE9]/10">
+                    <img src="images/parcours1.jpg" alt="Évolution" class="w-full h-full object-contain rounded-lg">
                 </div>
                 <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
                     <div>
@@ -308,9 +308,9 @@
             </div>
 
             <!-- Slide 2 : GMP alternance -->
-            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
-                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
-                    <img src="images/parcours_2.jpg" alt="GMP Alternance" class="w-full h-full object-contain rounded-lg">
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] !flex-col md:!flex-row">
+                <div class="w-full md:w-1/2 h-56 md:h-auto flex-shrink-0 bg-[#2E1500]/50 p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#F7EFE9]/10">
+                    <img src="images/parcours2.jpg" alt="GMP Alternance" class="w-full h-full object-contain rounded-lg">
                 </div>
                 <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
                     <div>
@@ -325,9 +325,9 @@
             </div>
 
             <!-- Slide 3 : GMP Initial -->
-            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
-                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
-                    <img src="images/parcours_3.jpg" alt="GMP Initial" class="w-full h-full object-contain rounded-lg">
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] !flex-col md:!flex-row">
+                <div class="w-full md:w-1/2 h-56 md:h-auto flex-shrink-0 bg-[#2E1500]/50 p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#F7EFE9]/10">
+                    <img src="images/parcours3.jpg" alt="GMP Initial" class="w-full h-full object-contain rounded-lg">
                 </div>
                 <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
                     <div>
@@ -342,9 +342,9 @@
             </div>
             
             <!-- Slide 4 : STI2D -->
-            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
-                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
-                    <img src="images/parcours_4.jpg" alt="Bac STI2D" class="w-full h-full object-contain rounded-lg">
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] !flex-col md:!flex-row">
+                <div class="w-full md:w-1/2 h-56 md:h-auto flex-shrink-0 bg-[#2E1500]/50 p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#F7EFE9]/10">
+                    <img src="images/parcours4.jpg" alt="Bac STI2D" class="w-full h-full object-contain rounded-lg">
                 </div>
                 <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
                     <div>
@@ -366,11 +366,11 @@
             <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">Projets</h2>
         </div>
         
-        <!-- Carrousel Projets (Toutes les étiquettes uniformisées avec object-contain) -->
+        <!-- Carrousel Projets (Image à gauche, texte à droite) -->
         <div class="carousel-container">
             <!-- Projet 1 -->
-            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
-                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] !flex-col md:!flex-row">
+                <div class="w-full md:w-1/2 h-56 md:h-auto flex-shrink-0 bg-[#2E1500]/50 p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#F7EFE9]/10">
                     <img src="images/projet1.jpg" alt="Titre du Projet 1" class="w-full h-full object-contain rounded-lg">
                 </div>
                 <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
@@ -386,9 +386,9 @@
             </div>
 
             <!-- Projet 2 -->
-            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
-                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
-                    <img src="images/projet2.jpg" alt="Titre du Projet 2" class="w-full h-full object-contain rounded-lg">
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] !flex-col md:!flex-row">
+                <div class="w-full md:w-1/2 h-56 md:h-auto flex-shrink-0 bg-[#2E1500]/50 p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#F7EFE9]/10">
+                    <img src="images/projet2.png" alt="Titre du Projet 2" class="w-full h-full object-contain rounded-lg">
                 </div>
                 <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
                     <div>
@@ -403,8 +403,8 @@
             </div>
 
             <!-- Projet 3 -->
-            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
-                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] !flex-col md:!flex-row">
+                <div class="w-full md:w-1/2 h-56 md:h-auto flex-shrink-0 bg-[#2E1500]/50 p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#F7EFE9]/10">
                     <img src="images/projet3.jpg" alt="Titre du Projet 3" class="w-full h-full object-contain rounded-lg">
                 </div>
                 <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
@@ -420,8 +420,8 @@
             </div>
 
             <!-- Projet 4 -->
-            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
-                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] !flex-col md:!flex-row">
+                <div class="w-full md:w-1/2 h-56 md:h-auto flex-shrink-0 bg-[#2E1500]/50 p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#F7EFE9]/10">
                     <img src="images/projet4.jpg" alt="Titre du Projet 4" class="w-full h-full object-contain rounded-lg">
                 </div>
                 <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
@@ -442,6 +442,7 @@
     <section id="section-cv" class="h-screen flex flex-col justify-between pt-12 pb-4 border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
         <div class="px-8 md:px-16 mb-2 flex flex-col md:flex-row md:items-center justify-start gap-6">
             <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">CV</h2>
+            <!-- Bouton Télécharger CV pointant vers cv.pdf à la racine du dépôt GitHub -->
             <a href="cv.pdf" download="CV_Raphael_Chupin.pdf" class="btn-outline flex items-center gap-3 !mt-0">
                 Télécharger le PDF
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
