@@ -59,11 +59,13 @@
             overflow: hidden;
         }
         .blob {
-            width: 8in;
-            height: 8in;
+            width: 5.5in;
+            height: 5.5in;
+            max-width: 75vw;
+            max-height: 75vw;
             border-radius: 50%;
             
-            /* Base argentée lisse et claire, sans aucune ligne noire */
+            /* Base argentée lisse et claire */
             background: radial-gradient(
                 circle at 30% 30%, 
                 #ffffff 0%, 
@@ -73,27 +75,24 @@
                 #888888 100%
             );
             
-            /* C'est ici qu'on crée l'aspect "Brillant / Glossy / Liquide" */
+            /* Aspect Brillant / Glossy / Liquide */
             box-shadow: 
-                inset 30px 30px 60px rgba(255, 255, 255, 1),       /* Grand éclat lumineux intense */
-                inset -20px -20px 40px rgba(0, 0, 0, 0.25),        /* Ombre douce pour le volume 3D */
-                inset -60px -60px 60px rgba(255, 255, 255, 0.7),   /* Reflet clair sur le bord opposé (effet miroir) */
-                inset 10px 10px 15px rgba(255, 255, 255, 1),       /* Point de lumière hyper pur (spéculaire) */
-                0 30px 50px rgba(46, 21, 0, 0.1);                  /* Ombre portée douce sur le fond crème */
+                inset 30px 30px 60px rgba(255, 255, 255, 1), 
+                inset -20px -20px 40px rgba(0, 0, 0, 0.25), 
+                inset -60px -60px 60px rgba(255, 255, 255, 0.7), 
+                inset 10px 10px 15px rgba(255, 255, 255, 1), 
+                0 30px 50px rgba(46, 21, 0, 0.1); 
             
             /* Animation d'ondulation liquide */
             animation: morphBlob 10s ease-in-out infinite alternate;
             transform-origin: center;
         }
 
-        /* Garde uniquement l'animation de déformation fluide */
         @keyframes morphBlob {
             0%   { border-radius: 52% 48% 55% 45% / 50% 55% 45% 50%; }
             50%  { border-radius: 48% 52% 45% 55% / 55% 45% 50% 45%; }
             100% { border-radius: 50% 50% 52% 48% / 45% 50% 55% 55%; }
         }
-        @keyframes gradientShift { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
-        @keyframes rotateBlob { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1); } 100% { transform: rotate(360deg) scale(1); } }
 
         /* --- CARROUSEL FLUIDE (HORIZONTAL SCROLL) --- */
         .carousel-container {
@@ -102,34 +101,33 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scroll-behavior: smooth;
-            padding: 2rem 5vw 4rem 5vw; /* Plus de padding en bas pour la scrollbar */
+            padding: 1rem 5vw 2rem 5vw;
             gap: 2rem;
             align-items: stretch;
-            /* Personnalisation de la barre de défilement pour la rendre PLUS VISIBLE */
             scrollbar-width: thin;
             scrollbar-color: rgba(46, 21, 0, 0.6) rgba(46, 21, 0, 0.15);
         }
         
-        /* Scrollbar Webkit (Chrome, Safari, Edge) */
+        /* Scrollbar Webkit */
         .carousel-container::-webkit-scrollbar {
-            height: 12px; /* Plus épaisse */
+            height: 12px;
         }
         .carousel-container::-webkit-scrollbar-track {
-            background: rgba(46, 21, 0, 0.12); /* Fond de la barre plus visible */
+            background: rgba(46, 21, 0, 0.12);
             border-radius: 10px;
-            margin: 0 5vw; /* Aligne avec le padding */
+            margin: 0 5vw;
         }
         .carousel-container::-webkit-scrollbar-thumb {
-            background-color: rgba(46, 21, 0, 0.5); /* Curseur plus contrasté */
+            background-color: rgba(46, 21, 0, 0.5);
             border-radius: 10px;
         }
         .carousel-container::-webkit-scrollbar-thumb:hover {
-            background-color: rgba(46, 21, 0, 0.8); /* Foncée au survol */
+            background-color: rgba(46, 21, 0, 0.8);
         }
         
         .carousel-item {
             scroll-snap-align: center;
-            flex: 0 0 85vw; /* Prend 85% de l'écran mobile */
+            flex: 0 0 85vw;
             max-width: 900px;
             display: flex;
             flex-direction: column;
@@ -142,7 +140,7 @@
 
         @media (min-width: 768px) {
             .carousel-item {
-                flex: 0 0 70vw; /* Prend 70% sur desktop pour laisser entrevoir la suite */
+                flex: 0 0 70vw;
             }
         }
 
@@ -240,14 +238,14 @@
                 </div>
                 <div class="text-center group">
                     <span class="block text-xs uppercase tracking-[0.2em] text-[#F7EFE9]/60 mb-2">Réseau</span>
-                    <a href="www.linkedin.com/in/raphaël-chupin-697139278" target="_blank" class="text-xl md:text-2xl font-light contact-item">Profil LinkedIn ↗</a>
+                    <a href="https://www.linkedin.com/in/rapha%C3%ABl-chupin-697139278" target="_blank" class="text-xl md:text-2xl font-light contact-item">Profil LinkedIn ↗</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- ================= 1. HÉROS (ACCUEIL) ================= -->
-    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden ">
+    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div class="blob-container">
             <div class="blob"></div>
         </div>
@@ -256,41 +254,40 @@
             <p class="text-xs md:text-sm uppercase tracking-[0.3em] text-[#2E1500] mt-4">Génie Mécanique et Productique</p>
             
             <!-- Flèche pour scroller vers la suite -->
-            <a href="#section-video" class="absolute -bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50 hover:opacity-100 transition-opacity text-[#2E1500]">
+            <a href="#section-video" class="absolute -bottom-28 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50 hover:opacity-100 transition-opacity text-[#2E1500]">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
             </a>
         </div>
     </section>
 
     <!-- ================= 2. SECTION VIDÉO ================= -->
-   <section id="section-video" class="h-screen flex flex-col items-center justify-center border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
-        <div class="px-8 md:px-16 mb-12 text-center w-full">
-            <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">Vidéo</h2>
-            <p class="text-sm uppercase tracking-[0.3em] opacity-60 mt-2 text-[#2E1500]">Présentation immersive</p>
+    <section id="section-video" class="h-screen flex flex-col items-center justify-between py-10 border-t border-[#2E1500]/10 bg-[#F7EFE9] relative overflow-hidden">
+        <div class="px-8 md:px-16 text-center w-full mt-2">
+            <h2 class="text-4xl md:text-6xl font-serif text-[#2E1500]">Vidéo</h2>
+            <p class="text-xs uppercase tracking-[0.3em] opacity-60 mt-1 text-[#2E1500]">Présentation immersive</p>
         </div>
         
-        <div class="w-full max-w-5xl px-6 md:px-12 flex flex-col items-center">
-    <!-- Lecteur Vidéo Centré (YouTube) -->
+        <div class="w-full max-w-3xl px-6 md:px-12 flex flex-col items-center my-auto">
+            <!-- Lecteur Vidéo Centré -->
             <div class="w-full aspect-video bg-gray-200 relative overflow-hidden border border-[#2E1500]/20 shadow-2xl rounded-2xl">
-            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/YpqqDPj8L8s?si=Wq4AbhILjzN56RM5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            
+                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/YpqqDPj8L8s?si=Wq4AbhILjzN56RM5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            
             </div>
             
             <!-- Description -->
-            <p class="mt-8 text-lg md:text-xl text-[#2E1500] opacity-80 leading-relaxed font-light text-center max-w-3xl">
-                Mon Parcours. Ma vision. Mes Réalisation. Le tout en images
+            <p class="mt-4 text-base md:text-lg text-[#2E1500] opacity-80 leading-relaxed font-light text-center max-w-2xl">
+                Mon Parcours. Ma vision. Mes Réalisations. Le tout en images.
             </p>
         </div>
     </section>
 
     <!-- ================= 3. SECTION PARCOURS ================= -->
-    <section id="section-parcours" class="h-screen flex flex-col justify-center border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
-        <div class="px-8 md:px-16 mb-4">
+    <section id="section-parcours" class="h-screen flex flex-col justify-between pt-12 pb-4 border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
+        <div class="px-8 md:px-16 mb-2">
             <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">Parcours</h2>
         </div>
         
         <!-- Carrousel Parcours -->
         <div class="carousel-container">
-            
             <!-- Slide 1 : Intro -->
             <div class="carousel-item p-12 md:p-20 justify-center bg-[#2E1500] text-[#F7EFE9] border border-[#2E1500]/20">
                 <h3 class="text-5xl md:text-6xl font-serif mb-6">Évolution<br></h3>
@@ -323,28 +320,22 @@
                     Conception centrée utilisateur pour des marques de luxe et d'ingénierie. Recherche, prototypage et validation de concepts.
                 </p>
             </div>
-            
         </div>
     </section>
     
-<!-- ================= 4. SECTION Projets ================= -->
-    <section id="section-projets" class="h-screen flex flex-col justify-center border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
-        <div class="px-8 md:px-16 mb-4">
+    <!-- ================= 4. SECTION PROJETS ================= -->
+    <section id="section-projets" class="h-screen flex flex-col justify-between pt-12 pb-4 border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
+        <div class="px-8 md:px-16 mb-2">
             <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">Projets</h2>
         </div>
         
         <!-- Carrousel Projet -->
         <div class="carousel-container">
-            
             <!-- Slide 1 : Projet avec image -->
             <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] border border-[#2E1500]/20 flex flex-col overflow-hidden">
-                
-                <!-- Zone Image (utilise le chemin relatif vers votre dossier) -->
                 <div class="w-full h-64 md:h-80 flex-shrink-0">
                     <img src="images/projet_1.jpg" alt="Nom du premier projet" class="w-full h-full object-cover">
                 </div>
-                
-                <!-- Zone Texte -->
                 <div class="p-8 md:p-12 flex flex-col justify-center flex-1">
                     <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2 text-[#F7EFE9]">Date ou Catégorie</div>
                     <h3 class="text-3xl md:text-4xl font-serif mb-4">Titre du Projet 1</h3>
@@ -357,7 +348,6 @@
             <!-- Slide 2 : Un autre projet -->
             <div class="carousel-item bg-[#2E1500] text-[#F7EFE9] border border-[#2E1500]/20 flex flex-col overflow-hidden">
                 <div class="w-full h-64 md:h-80 flex-shrink-0">
-                    <!-- Changez le nom de l'image ici -->
                     <img src="images/projet2.png" alt="Nom du second projet" class="w-full h-full object-cover">
                 </div>
                 <div class="p-8 md:p-12 flex flex-col justify-center flex-1">
@@ -368,20 +358,15 @@
                     </p>
                 </div>
             </div>
-            
-            <!-- Ajoutez autant de "Slide" que vous avez de projets en copiant-collant le bloc ci-dessus -->
-
         </div>
     </section>
     
     <!-- ================= 5. SECTION CV ================= -->
-    <section id="section-cv" class="h-screen flex flex-col justify-center border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
-        <div class="px-8 md:px-16 mb-4 flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-                <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">CV</h2>
-            </div>
-            <!-- Bouton Télécharger CV pointant vers le PDF correct -->
-            <a href="CV Raphael Chupin.pdf" download="CV Raphael Chupin.pdf" class="btn-outline flex items-center gap-3">
+    <section id="section-cv" class="h-screen flex flex-col justify-between pt-12 pb-4 border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
+        <div class="px-8 md:px-16 mb-2 flex flex-col md:flex-row md:items-center justify-start gap-6">
+            <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">CV</h2>
+            <!-- Bouton Télécharger CV aligné à côté du titre pour éviter le chevauchement avec le bouton Contact -->
+            <a href="CV Raphael Chupin.pdf" download="CV Raphael Chupin.pdf" class="btn-outline flex items-center gap-3 !mt-0">
                 Télécharger le PDF
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
             </a>
@@ -389,7 +374,6 @@
         
         <!-- Carrousel CV -->
         <div class="carousel-container">
-            
             <!-- Bloc 1 : Profil -->
             <div class="carousel-item p-12 md:p-20 justify-center !bg-[#2E1500] !text-[#F7EFE9] !border-none">
                 <h3 class="text-5xl md:text-6xl font-serif italic mb-8">Profil</h3>
@@ -432,7 +416,6 @@
                 </ul>
                 <p class="text-xs uppercase tracking-widest mt-16 opacity-80">Savoir-faire techniques</p>
             </div>
-
         </div>
     </section>
 
@@ -494,6 +477,7 @@
             }
         }
     </script>
+    
     <!-- SCRIPT DE DÉFILEMENT VERTICAL FLUIDE -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -502,13 +486,13 @@
             let isScrolling = false;
 
             window.addEventListener("wheel", (e) => {
-                // Ignore le défilement horizontal (pour laisser fonctionner tes carrousels)
+                // Ignore le défilement horizontal pour laisser fonctionner les carrousels
                 if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
 
-                // Bloque l'à-coup brutal de la molette par défaut
+                // Bloque le comportement par défaut
                 e.preventDefault();
 
-                // Si la page est déjà en train de glisser, on ignore le coup de molette
+                // Si déjà en train de glisser, ignorer
                 if (isScrolling) return;
 
                 if (e.deltaY > 0) {
@@ -532,7 +516,7 @@
                 // Fait glisser la page en douceur vers la section ciblée
                 sections[currentSectionIndex].scrollIntoView({ behavior: "smooth" });
                 
-                // Verrouille la molette pendant 800ms (le temps de l'animation) pour éviter les sauts
+                // Verrouille la molette pendant 800ms
                 setTimeout(() => {
                     isScrolling = false;
                 }, 800);
