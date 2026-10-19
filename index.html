@@ -59,7 +59,6 @@
             overflow: hidden;
         }
         .blob {
-            /* Taille ajustée à 6.8in pour un rendu légèrement plus gros */
             width: 6.8in;
             height: 6.8in;
             max-width: 82vw;
@@ -131,7 +130,7 @@
             scroll-snap-align: center;
             flex: 0 0 85vw;
             max-width: 900px;
-            min-height: 420px; /* Taille minimale uniforme pour toutes les étiquettes */
+            min-height: 420px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -291,52 +290,72 @@
             <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">Parcours</h2>
         </div>
         
-        <!-- Carrousel Parcours (Étiquettes égalisées) -->
+        <!-- Carrousel Parcours -->
         <div class="carousel-container">
             <!-- Slide 1 : Intro -->
-            <div class="carousel-item p-10 md:p-16 justify-between bg-[#2E1500] text-[#F7EFE9]">
-                <div>
-                    <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-4">Vue d'ensemble</div>
-                    <h3 class="text-4xl md:text-6xl font-serif mb-6">Évolution</h3>
-                    <p class="text-xl opacity-80 leading-relaxed font-light">Un cheminement alliant création, technique et stratégie.</p>
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
+                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
+                    <img src="images/parcours_1.jpg" alt="Évolution" class="w-full h-full object-contain rounded-lg">
                 </div>
-                <p class="text-xs uppercase tracking-widest opacity-50 mt-8">Parcours Global</p>
+                <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
+                    <div>
+                        <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2">Vue d'ensemble</div>
+                        <h3 class="text-2xl md:text-3xl font-serif mb-3">Évolution</h3>
+                        <p class="text-base opacity-80 leading-relaxed font-light">Un cheminement alliant création, technique et stratégie.</p>
+                    </div>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-4">Parcours Global</p>
+                </div>
             </div>
 
             <!-- Slide 2 : GMP alternance -->
-            <div class="carousel-item p-10 md:p-16 justify-between bg-[#2E1500] text-[#F7EFE9]">
-                <div>
-                    <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-4">Aujourd'hui</div>
-                    <h3 class="text-4xl md:text-5xl font-serif mb-6">Formation GMP en alternance</h3>
-                    <p class="text-xl opacity-80 leading-relaxed font-light">
-                        Création d'expériences numériques immersives et gestion de projets innovants. Fusion de l'esthétique et de la fonctionnalité.
-                    </p>
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
+                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
+                    <img src="images/parcours_2.jpg" alt="GMP Alternance" class="w-full h-full object-contain rounded-lg">
                 </div>
-                <p class="text-xs uppercase tracking-widest opacity-50 mt-8">Statut Actuel</p>
+                <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
+                    <div>
+                        <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2">Aujourd'hui</div>
+                        <h3 class="text-2xl md:text-3xl font-serif mb-3">Formation GMP en alternance</h3>
+                        <p class="text-base opacity-80 leading-relaxed font-light">
+                            Création d'expériences numériques immersives et gestion de projets innovants. Fusion de l'esthétique et de la fonctionnalité.
+                        </p>
+                    </div>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-4">Statut Actuel</p>
+                </div>
             </div>
 
             <!-- Slide 3 : GMP Initial -->
-            <div class="carousel-item p-10 md:p-16 justify-between bg-[#2E1500] text-[#F7EFE9]">
-                <div>
-                    <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-4">2023 - 2025</div>
-                    <h3 class="text-4xl md:text-5xl font-serif mb-6">Formation GMP en Initiale</h3>
-                    <p class="text-xl opacity-80 leading-relaxed font-light">
-                        Conception centrée utilisateur pour des marques de luxe et d'ingénierie. Recherche, prototypage et validation de concepts.
-                    </p>
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
+                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
+                    <img src="images/parcours_3.jpg" alt="GMP Initial" class="w-full h-full object-contain rounded-lg">
                 </div>
-                <p class="text-xs uppercase tracking-widest opacity-50 mt-8">Formation Supérieure</p>
+                <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
+                    <div>
+                        <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2">2023 - 2025</div>
+                        <h3 class="text-2xl md:text-3xl font-serif mb-3">Formation GMP en Initiale</h3>
+                        <p class="text-base opacity-80 leading-relaxed font-light">
+                            Conception centrée utilisateur pour des marques de luxe et d'ingénierie. Recherche, prototypage et validation de concepts.
+                        </p>
+                    </div>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-4">Formation Supérieure</p>
+                </div>
             </div>
             
             <!-- Slide 4 : STI2D -->
-            <div class="carousel-item p-10 md:p-16 justify-between bg-[#2E1500] text-[#F7EFE9]">
-                <div>
-                    <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-4">2021 - 2024</div>
-                    <h3 class="text-4xl md:text-5xl font-serif mb-6">Bac STI2D</h3>
-                    <p class="text-xl opacity-80 leading-relaxed font-light">
-                        Enseignement technologique en innovation technologique et éco-conception (ITEC). Apprentissage des bases de l'ingénierie et du prototypage.
-                    </p>
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
+                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
+                    <img src="images/parcours_4.jpg" alt="Bac STI2D" class="w-full h-full object-contain rounded-lg">
                 </div>
-                <p class="text-xs uppercase tracking-widest opacity-50 mt-8">Lycée Nikola Tesla</p>
+                <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
+                    <div>
+                        <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2">2021 - 2024</div>
+                        <h3 class="text-2xl md:text-3xl font-serif mb-3">Bac STI2D</h3>
+                        <p class="text-base opacity-80 leading-relaxed font-light">
+                            Enseignement technologique en innovation technologique et éco-conception (ITEC). Apprentissage des bases de l'ingénierie et du prototypage.
+                        </p>
+                    </div>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-4">Lycée Nikola Tesla</p>
+                </div>
             </div>
         </div>
     </section>
@@ -347,30 +366,31 @@
             <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">Projets</h2>
         </div>
         
-        <!-- Carrousel Projet -->
+        <!-- Carrousel Projets (Toutes les étiquettes uniformisées avec object-contain) -->
         <div class="carousel-container">
-            <!-- Slide 1 : Projet avec image -->
+            <!-- Projet 1 -->
             <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
-                <div class="w-full h-56 md:h-64 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center">
-                <img src="images/projet_1.jpg" alt="Titre" class="w-full h-full object-contain rounded-lg">
+                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
+                    <img src="images/projet1.jpg" alt="Titre du Projet 1" class="w-full h-full object-contain rounded-lg">
                 </div>
-                <div class="p-8 md:p-10 flex flex-col justify-between flex-1">
+                <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
                     <div>
-                        <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2">Date ou Catégorie</div>
+                        <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2">Projet Académique</div>
                         <h3 class="text-2xl md:text-3xl font-serif mb-3">Titre du Projet 1</h3>
                         <p class="text-base opacity-80 leading-relaxed font-light">
                             Description de ce projet alliant technique, création et stratégie. Expliquez brièvement votre rôle et le résultat obtenu.
                         </p>
                     </div>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-4">Conception & Réalisation</p>
                 </div>
             </div>
 
-            <!-- Slide 2 : Un autre projet -->
+            <!-- Projet 2 -->
             <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
-                <div class="w-full h-56 md:h-64 flex-shrink-0">
-                    <img src="projet2.png" alt="Nom du second projet" class="w-full h-full object-cover">
+                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
+                    <img src="images/projet2.jpg" alt="Titre du Projet 2" class="w-full h-full object-contain rounded-lg">
                 </div>
-                <div class="p-8 md:p-10 flex flex-col justify-between flex-1">
+                <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
                     <div>
                         <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2">2024</div>
                         <h3 class="text-2xl md:text-3xl font-serif mb-3">Titre du Projet 2</h3>
@@ -378,6 +398,41 @@
                             Création d'expériences numériques immersives et gestion de projets innovants. Fusion de l'esthétique et de la fonctionnalité.
                         </p>
                     </div>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-4">Modélisation 3D</p>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
+                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
+                    <img src="images/projet3.jpg" alt="Titre du Projet 3" class="w-full h-full object-contain rounded-lg">
+                </div>
+                <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
+                    <div>
+                        <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2">2024 - 2025</div>
+                        <h3 class="text-2xl md:text-3xl font-serif mb-3">Titre du Projet 3</h3>
+                        <p class="text-base opacity-80 leading-relaxed font-light">
+                            Étude des contraintes mécaniques, analyse des matériaux et optimisation de structures par éléments finis.
+                        </p>
+                    </div>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-4">Calcul de Structures</p>
+                </div>
+            </div>
+
+            <!-- Projet 4 -->
+            <div class="carousel-item bg-[#2E1500] text-[#F7EFE9]">
+                <div class="w-full h-48 md:h-56 flex-shrink-0 bg-[#2E1500]/50 p-2 flex items-center justify-center border-b border-[#F7EFE9]/10">
+                    <img src="images/projet4.jpg" alt="Titre du Projet 4" class="w-full h-full object-contain rounded-lg">
+                </div>
+                <div class="p-6 md:p-8 flex flex-col justify-between flex-1">
+                    <div>
+                        <div class="text-xs font-bold tracking-widest uppercase opacity-50 mb-2">2025</div>
+                        <h3 class="text-2xl md:text-3xl font-serif mb-3">Titre du Projet 4</h3>
+                        <p class="text-base opacity-80 leading-relaxed font-light">
+                            Prototypage rapide et intégration de systèmes de réalité virtuelle appliqués aux procédés industriels.
+                        </p>
+                    </div>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-4">Simulation & VR</p>
                 </div>
             </div>
         </div>
@@ -387,7 +442,7 @@
     <section id="section-cv" class="h-screen flex flex-col justify-between pt-12 pb-4 border-t border-[#2E1500]/10 bg-[#F7EFE9] relative">
         <div class="px-8 md:px-16 mb-2 flex flex-col md:flex-row md:items-center justify-start gap-6">
             <h2 class="text-5xl md:text-7xl font-serif text-[#2E1500]">CV</h2>
-            <a href="cv.pdf" download="cv.pdf" class="btn-outline flex items-center gap-3 !mt-0">
+            <a href="cv.pdf" download="CV_Raphael_Chupin.pdf" class="btn-outline flex items-center gap-3 !mt-0">
                 Télécharger le PDF
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
             </a>
@@ -396,7 +451,7 @@
         <!-- Carrousel CV -->
         <div class="carousel-container">
             <!-- Bloc 1 : Profil -->
-            <div class="carousel-item p-10 md:p-16 justify-between bg-[#2E1500] text-[#F7EFE9]">
+            <div class="carousel-item p-8 md:p-14 justify-between bg-[#2E1500] text-[#F7EFE9]">
                 <div>
                     <h3 class="text-4xl md:text-5xl font-serif italic mb-6">Profil</h3>
                     <ul class="space-y-3 text-lg font-light opacity-90">
@@ -405,11 +460,11 @@
                         <li>Curieux, créatif et autonome</li>
                     </ul>
                 </div>
-                <p class="text-xs uppercase tracking-widest opacity-50 mt-8">Objectif professionnel</p>
+                <p class="text-xs uppercase tracking-widest opacity-50 mt-6">Objectif professionnel</p>
             </div>
             
             <!-- Bloc 2 : Formations -->
-            <div class="carousel-item p-10 md:p-16 justify-between bg-[#2E1500] text-[#F7EFE9]">
+            <div class="carousel-item p-8 md:p-14 justify-between bg-[#2E1500] text-[#F7EFE9]">
                 <div>
                     <h3 class="text-4xl md:text-5xl font-serif mb-6">Formations</h3>
                     <ul class="space-y-3 text-lg font-light opacity-90">
@@ -417,11 +472,11 @@
                         <li><span class="font-bold">Bac STI2D ITEC</span> - Lycée Nikola Tesla, Dourdan (2021 - 2024)</li>
                     </ul>
                 </div>
-                <p class="text-xs uppercase tracking-widest opacity-50 mt-8">Parcours académique</p>
+                <p class="text-xs uppercase tracking-widest opacity-50 mt-6">Parcours académique</p>
             </div>
 
             <!-- Bloc 3 : Expériences -->
-            <div class="carousel-item p-10 md:p-16 justify-between bg-[#2E1500] text-[#F7EFE9]">
+            <div class="carousel-item p-8 md:p-14 justify-between bg-[#2E1500] text-[#F7EFE9]">
                 <div>
                     <h3 class="text-4xl md:text-5xl font-serif italic mb-6">Expériences</h3>
                     <ul class="space-y-3 text-lg font-light opacity-90">
@@ -429,11 +484,11 @@
                         <li><span class="font-bold">Préparateur Logistique</span> - ALDI / LIDL, Ablis (Juillet-Août 2024 et 2025)</li>
                     </ul>
                 </div>
-                <p class="text-xs uppercase tracking-widest opacity-50 mt-8">Parcours professionnel</p>
+                <p class="text-xs uppercase tracking-widest opacity-50 mt-6">Parcours professionnel</p>
             </div>
 
             <!-- Bloc 4 : Compétences -->
-            <div class="carousel-item p-10 md:p-16 justify-between bg-[#2E1500] text-[#F7EFE9]">
+            <div class="carousel-item p-8 md:p-14 justify-between bg-[#2E1500] text-[#F7EFE9]">
                 <div>
                     <h3 class="text-4xl md:text-5xl font-serif mb-6">Compétences</h3>
                     <ul class="space-y-3 text-lg font-light opacity-90">
@@ -443,7 +498,7 @@
                         <li><span class="font-bold">Langues :</span> Anglais (B2), Allemand (A2)</li>
                     </ul>
                 </div>
-                <p class="text-xs uppercase tracking-widest opacity-50 mt-8">Savoir-faire techniques</p>
+                <p class="text-xs uppercase tracking-widest opacity-50 mt-6">Savoir-faire techniques</p>
             </div>
         </div>
     </section>
@@ -507,7 +562,7 @@
         }
     </script>
     
-    <!-- SCRIPT DE DÉFILEMENT VERTICAL FLUIDE (CORRIGÉ & STABLE) -->
+    <!-- SCRIPT DE DÉFILEMENT VERTICAL FLUIDE -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const sections = document.querySelectorAll("section");
@@ -517,24 +572,22 @@
                 // Ignore le défilement horizontal si l'utilisateur scrolle un carrousel
                 if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
 
-                // Empêche le défilement fluide par défaut
+                // Empêche le défilement par défaut
                 e.preventDefault();
 
-                // Si une transition est déjà en cours, ignorer les coups de molette supplémentaires
+                // Si une transition est déjà en cours, ignorer
                 if (isScrolling) return;
 
-                // Calcule dynamiquement la section la plus proche de la position actuelle de défilement
+                // Calcule la section la plus proche de la position actuelle
                 const sectionHeight = window.innerHeight;
                 const currentIndex = Math.round(window.scrollY / sectionHeight);
 
                 let targetIndex = currentIndex;
 
-                // Filtre les petits mouvements involontaires (seuil à 20px)
+                // Seuil pour éviter les coups de molette involontaires
                 if (e.deltaY > 20) {
-                    // Descendre d'exactement 1 section
                     targetIndex = Math.min(sections.length - 1, currentIndex + 1);
                 } else if (e.deltaY < -20) {
-                    // Monter d'exactement 1 section
                     targetIndex = Math.max(0, currentIndex - 1);
                 } else {
                     return;
@@ -543,10 +596,10 @@
                 if (targetIndex !== currentIndex) {
                     isScrolling = true;
                     
-                    // Déplacement fluide vers la section cible
+                    // Déplacement fluide
                     sections[targetIndex].scrollIntoView({ behavior: "smooth" });
                     
-                    // Verrouillage de 1.1s pour filtrer l'inertie des molettes rapides / trackpads
+                    // Verrouillage de 1.1s pendant l'animation
                     setTimeout(() => {
                         isScrolling = false;
                     }, 1100);
